@@ -1,0 +1,36 @@
+{%extends 'base.html'%} {%block title%}Clubs{%endblock title%} {%block content%}
+<div class="container content">
+  <h1 class="text-center">Clubs at Dimond HS</h1>
+  <p>
+    Below are the Dimond HS Clubs that are on our platform. If you wish to add
+    or modify a club that you represent, please
+    <a href="#">apply to become a representative</a>.
+  </p>
+  <hr />
+  <div class="row mt-3 mx-auto">
+    {%for club in clubs%}
+    <a
+      href="{{club.id}}"
+      class="text-decoration-none card col-md-3 m-2 p-0"
+      style="width: 18rem"
+    >
+      <div class="col">
+        <div>
+          {%if club.thumbnail_image%}
+          <img
+            class="card-img-top"
+            src="{{MEDIA_URL}}\{{club.thumbnail_image|safe}}"
+            alt="The thumbnail image for this club."
+          />
+          {%endif%}
+          <div class="card-body">
+            <h4 class="card-title">{{club.name}}</h4>
+            <p class="card-text">{{club.club_short_description}}</p>
+          </div>
+        </div>
+      </div>
+    </a>
+    {%endfor%}
+  </div>
+</div>
+{%endblock content%}

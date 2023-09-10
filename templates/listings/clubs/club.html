@@ -1,0 +1,96 @@
+{%extends 'base.html'%} {%block content%} {%if club_not_exist%} CLUB DOES NOT
+EXIST! {%else%} {%block title%}{{club.name}}{%endblock title%}
+<div class="content container">
+  <h1 class="display-3">{{club.name}}</h1>
+  <small>Club at Dimond High School.</small>
+  {%if club.thumbnail_image%}
+  <hr />
+  <img class="card-img-top" style="max-height: 25vh; width: auto; height: auto;"
+    src="{{MEDIA_URL}}{{club.thumbnail_image|safe}}" alt="The thumbnail image for this club" />
+  {%endif%}
+  <hr />
+  <h2 class="mb-3">General Information</h2>
+  {%comment%}
+  <div>
+    <p>The leader of this club is <b>{{club.club_leader}}</b>.</p>
+    {% if club.club_sponsor %}
+    <p>This club is sponsored by {{club.club_sponsor}}.</p>
+    {% endif %}
+    <p>
+      The email address for this club is
+      <b><a href="mailto:{{club.email_address}}">{{club.email_address}}</a></b>
+    </p>
+    {% if club.phone_number %}
+    <p>The phone number for this club is <b>{{club.phone_number}}</b></p>
+    {% endif %}
+    <p>This club's meeting time is <b>{{club.regular_meeting_time}}</b></p>
+    <p>This club meets at <b>{{club.regular_meeting_location}}</b></p>
+    {% if club.members %} This club has {{club.members}} member(s). {% endif %}
+    {% if club.is_accepting_new_members %} {% endif %} {% if club.is_active %}
+    {% endif %} {% if club.is_official %} {% endif %}
+  </div>
+  {%endcomment%}
+  <div>
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <th scope="row">Leader of this club</th>
+          <td>{{club.club_leader}}</td>
+        </tr>
+        {% if club.club_sponsor %}
+        <tr>
+          <th scope="row">Sponsor of this club</th>
+          <td>{{club.club_sponsor}}</td>
+        </tr>
+        {% endif %}
+        <tr>
+          <th scope="row">Club's email address</th>
+          <td>
+            <a href="mailto:{{club.email_address}}">{{club.email_address}}</a>
+          </td>
+        </tr>
+        {% if club.phone_number %}
+        <tr>
+          <th scope="row">Club's phone number</th>
+          <td colspan="2">{{club.phone_number}}</td>
+        </tr>
+        {% endif %}
+        <tr>
+          <th scope="row">Club's meeting time</th>
+          <td colspan="2">{{club.regular_meeting_time}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Club's meeting location</th>
+          <td colspan="2">{{club.regular_meeting_location}}</td>
+        </tr>
+        {% if club.member_amount %}
+        <tr>
+          <th scope="row">How many members are in this club</th>
+          <td colspan="2">{{club.member_amount}}</td>
+        </tr>
+        {% endif %}
+      </tbody>
+    </table>
+    <div>
+      {% if club.is_accepting_new_members %}
+      <small>This club is currently accepting new members.</small>
+      <br />
+      {% endif %} {% if club.is_active %}
+      <small>This club is currently active.</small>
+      <br />
+      {% endif %} {% if club.is_official %}
+      <small>This club is officially endorsed by Dimond High School.</small>
+      <br />
+      {%endif%}
+    </div>
+  </div>
+  <hr />
+  <h2>Description</h2>
+  <p>{{club.club_description|linebreaksbr}}</p>
+  {% if club.notes %}
+  <hr />
+  <h2>Notes</h2>
+  <p>{{club.notes|linebreaksbr}}</p>
+  {% endif %}
+</div>
+{%endif%} {%endblock content%}

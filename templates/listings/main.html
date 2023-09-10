@@ -1,0 +1,42 @@
+{%extends 'base.html'%} {%block title%}Select Listing Type{%endblock title%}
+{%block content%}
+<div class="content container">
+  <div class="py-4">
+    <div class="p-5 mb-4 bg-body-tertiary rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">Our Listing Types</h1>
+        <p class="col-md-8 fs-4">
+          Below are the types of listings that we currently offer. If you have
+          any suggestions for what we should add, please
+          <a href="#contact">contact us</a>.
+        </p>
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch g-4 text-center">
+      <div class="col-md-6">
+        <a href="{%url 'Listing:clubs'%}" class="text-decoration-none">
+          <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+            <h2>Clubs</h2>
+            <p>
+              Click on this card to view information about the clubs at Dimond
+              High School.
+            </p>
+          </div></a
+        >
+      </div>
+      <div class="col-md-6">
+        <a href="#events" class="text-decoration-none">
+          <div class="h-100 p-5 bg-body-tertiary border rounded-3">
+            <h2>Events</h2>
+            <p>
+              Click on this card to view information about the events at Dimond
+              High School.
+            </p>
+          </div></a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock content%}
