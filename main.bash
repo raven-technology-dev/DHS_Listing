@@ -1,5 +1,5 @@
 source .venv/bin/activate;
-git pull git@github.com:buzz-buzz-Alaska/dhs_listing.git;
+git pull git@github.com:raven-technology-dev/DHS_Listing.git;
 pip install --upgrade -r requirements.txt;
 sudo apt update && sudo apt dist-upgrade;
 python3 manage.py makemigrations;

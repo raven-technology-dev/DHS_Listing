@@ -22,7 +22,7 @@ class Club_Representative(models.Model):
         verbose_name="Club Description",
         help_text="Description of the Club.",
     )
-    representitave_description = models.TextField(
+    representative_description = models.TextField(
         verbose_name="Representitave Description",
         help_text="Description of what the representitave does for the club.",
     )

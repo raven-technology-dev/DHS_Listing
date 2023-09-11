@@ -1,12 +1,16 @@
 {%extends 'base.html'%} {%block content%} {%if club_not_exist%} CLUB DOES NOT
 EXIST! {%else%} {%block title%}{{club.name}}{%endblock title%}
-<div class="content container">
+<div class="content container mb-5">
   <h1 class="display-3">{{club.name}}</h1>
   <small>Club at Dimond High School.</small>
   {%if club.thumbnail_image%}
   <hr />
-  <img class="card-img-top" style="max-height: 25vh; width: auto; height: auto;"
-    src="{{MEDIA_URL}}{{club.thumbnail_image|safe}}" alt="The thumbnail image for this club" />
+  <img
+    class="card-img-top"
+    style="max-height: 25vh; width: auto; height: auto"
+    src="{{MEDIA_URL}}{{club.thumbnail_image|safe}}"
+    alt="The thumbnail image for this club"
+  />
   {%endif%}
   <hr />
   <h2 class="mb-3">General Information</h2>

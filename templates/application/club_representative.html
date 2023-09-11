@@ -1,0 +1,205 @@
+{% extends 'base.html' %} {% block title %}Apply to become a club
+representative{% endblock title %} {% block content %}
+<div class="content container">
+  <h1>Club Representative application</h1>
+  <p>
+    Below is the application to become a club representative on our platform. If
+    your application gets approved, you will have permission to add or modify
+    your club on this platform. These applications are used in order to prevent
+    spam, so we can verify the identity and legitimacy of club representatives.
+  </p>
+  <div>
+    <form action="{%url 'Application:club_representative'%}" method="post">
+      {% csrf_token %}
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control {% if form.errors.representitave_name %}is-invalid{% endif %}"
+          id="repr_name"
+          placeholder="Example Human"
+          name="representitave_name"
+          required
+          {%
+          if
+          form.cleaned_data.representitave_name
+          %}
+          value="{{form.cleaned_data.representitave_name}}"
+          {%
+          endif
+          %}
+        />
+        <label for="repr_name">Your name.</label>
+        {% if form.errors.representitave_name %}
+        <div class="invalid-feedback">Please enter your name.</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="text"
+          class="form-control {% if form.errors.club_name %}is-invalid{% endif %}"
+          id="club__name"
+          placeholder="Awesome Club"
+          name="club_name"
+          required
+          {%
+          if
+          form.cleaned_data.club_name
+          %}
+          value="{{form.cleaned_data.club_name}}"
+          {%
+          endif
+          %}
+        />
+        <label for="club__name">Your club's name.</label>
+        {% if form.errors.club_name %}
+        <div class="invalid-feedback">Please enter your club's name.</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3">
+        <textarea
+          type="text"
+          class="form-control {% if form.errors.club_description %}is-invalid{% endif %}"
+          id="club_descr"
+          name="club_description"
+          required
+        >
+        {%
+        if
+        form.cleaned_data.club_description
+        %}
+        value="{{form.cleaned_data.club_description}}"
+        {%
+        endif
+        %}</textarea
+        >
+        <label for="club_descr">Brief description of the club.</label>
+        {% if form.errors.club_description %}
+        <div class="invalid-feedback">
+          Please enter a brief description of the club.
+        </div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3">
+        <textarea
+          type="text"
+          class="form-control {% if form.errors.representative_description %}is-invalid{% endif %}"
+          id="repr_descr"
+          name="representative_description"
+          required
+        >
+        {%
+        if
+        form.cleaned_data.representative_description
+        %}
+        {{form.cleaned_data.representative_description}}
+        {%
+        endif
+        %}</textarea
+        >
+        <label for="repr_descr"
+          >Brief description of what you do for the club.</label
+        >
+        {% if form.errors.representative_description %}
+        <div class="invalid-feedback">Please enter your name.</div>
+        {% endif %}
+      </div>
+      <div class="form-check mb-3">
+        <input
+          class="form-check-input {% if form.errors.club_is_official %}is-invalid{% endif %}"
+          type="checkbox"
+          value=""
+          id="is_official"
+          name="club_is_official"
+          {%
+          if
+          form.cleaned_data.club_is_official
+          %}
+          checked
+          {%
+          endif
+          %}
+        />
+        <label class="form-check-label" for="is_official">
+          Club is officially endorsed by Dimond High School.
+        </label>
+        {% if form.errors.club_is_official %}
+        <div class="invalid-feedback">Please enter your name.</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="email"
+          class="form-control {% if form.errors.rep_email %}is-invalid{% endif %}"
+          id="repr_email"
+          placeholder="exxample@raventechnology.dev"
+          name="rep_email"
+          required
+          {%
+          if
+          form.cleaned_data.rep_email
+          %}
+          value="{{form.cleaned_data.rep_email}}"
+          {%
+          endif
+          %}
+        />
+        <label for="repr_email">Your email address.</label>
+        {% if form.errors.rep_email %}
+        <div class="invalid-feedback">Please enter your name.</div>
+        {% endif %}
+      </div>
+      <div class="form-floating mb-3">
+        <input
+          type="tel"
+          class="form-control {% if form.errors.rep_email %}is-invalid{% endif %}"
+          id="repr_phone"
+          placeholder="(907)-600-9155"
+          name="rep_phone"
+          required
+          {%
+          if
+          form.cleaned_data.rep_phone
+          %}
+          value="{{form.cleaned_data.rep_phone}}"
+          {%
+          endif
+          %}
+        />
+        <label for="repr_phone">Phone number.</label>
+        {% if form.errors.rep_email %}
+        <div class="invalid-feedback">Please enter your name.</div>
+        {% endif %}
+      </div>
+      {#TODO: Make sure that the user knows that we will call them.#}
+      <div class="form-check mb-3">
+        <input
+          class="form-check-input {% if form.errors.agree_to_data_policy %}is-invalid{% endif %}"
+          type="checkbox"
+          id="agree_to_terms"
+          name="agree_to_data_policy"
+          {%
+          if
+          form.cleaned_data.agree_to_data_policy
+          %}
+          checked
+          {%
+          endif
+          %}
+        />
+        <label class="form-check-label" for="agree_to_terms">
+          You have read and agree to our <a href="#">Data Processing Policy</a>.
+        </label>
+        {% if not_agree_to_data_policy %}
+        <div class="invalid-feedback">
+          Before we can process your application, you must read and agree to our
+          Data Processing Policy.
+        </div>
+        {% endif %}
+      </div>
+      <div class="mt-3 mb-3">
+        <input type="submit" class="btn btn-primary" id="subm_form" />
+      </div>
+    </form>
+  </div>
+</div>
+{% endblock content %}
