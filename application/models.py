@@ -51,4 +51,4 @@ class Club_Representative(models.Model):
         verbose_name_plural = "Club Representitave Applications"
 
     def __str__(self) -> str:
-        return f"{self.representitave_name}"
+        return f"{self.representitave_name} for {self.club_name}"

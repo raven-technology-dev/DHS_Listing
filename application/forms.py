@@ -4,7 +4,7 @@ from .models import Club_Representative
 
 class Club_Representative_Form(forms.ModelForm):
     agree_to_data_policy = forms.BooleanField(
-        required=True,widget=forms.CheckboxInput()
+        required=True, widget=forms.CheckboxInput()
     )
     club_is_official = forms.BooleanField(required=False)
 

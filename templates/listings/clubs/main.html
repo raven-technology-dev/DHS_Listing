@@ -4,26 +4,17 @@
   <p>
     Below are the Dimond HS Clubs that are on our platform. If you wish to add
     or modify a club that you represent, please
-    <a href="{%url 'Application:club_representative'%}"
-      >apply to become a representative</a
-    >.
+    <a href="{%url 'Application:club_representative'%}">apply to become a representative</a>.
   </p>
   <hr />
   <div class="row mt-3 mx-auto">
     {%for club in clubs%}
-    <a
-      href="{{club.id}}"
-      class="text-decoration-none card col-md-3 m-2 p-0"
-      style="width: 18rem"
-    >
+    <a href="{{club.id}}" class="text-decoration-none card col-md-3 m-2 p-0" style="width: 18rem">
       <div class="col">
         <div>
           {%if club.thumbnail_image%}
-          <img
-            class="card-img-top"
-            src="{{MEDIA_URL}}\{{club.thumbnail_image|safe}}"
-            alt="The thumbnail image for this club."
-          />
+          <img class="card-img-top" src="{{MEDIA_URL}}\{{club.thumbnail_image|safe}}"
+            alt="The thumbnail image for this club." />
           {%endif%}
           <div class="card-body">
             <h4 class="card-title">{{club.name}}</h4>

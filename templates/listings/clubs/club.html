@@ -1,8 +1,11 @@
 {%extends 'base.html'%} {%block content%} {%if club_not_exist%} CLUB DOES NOT
-EXIST! {%else%} {%block title%}{{club.name}}{%endblock title%}
+EXIST! TODO: Makt this better! {%else%} {%block title%}{{club.name}}{%endblock title%}
 <div class="content container mb-5">
+  <div class="mb-3">
+    <a href="{%url 'Listing:clubs'%}"><p class="fs-5">&#8701; Click to go back to Clubs Listings.</p></a>
+  </div>
   <h1 class="display-3">{{club.name}}</h1>
-  <small>Club at Dimond High School.</small>
+  <small>Club (or other sub-organization) at Dimond High School.</small>
   {%if club.thumbnail_image%}
   <hr />
   <img

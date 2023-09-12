@@ -7,6 +7,11 @@ representative{% endblock title %} {% block content %}
     your application gets approved, you will have permission to add or modify
     your club on this platform. These applications are used in order to prevent
     spam, so we can verify the identity and legitimacy of club representatives.
+    <br>
+    After your application has been submitted, we will call you in order to proceed
+    with additional verification, and so we can set up your account. Please note
+    that <a href="https://raventechnology.dev" target="_blank">Raven Technology</a>
+    will call you, and not Dimond HS Listings.
   </p>
   <div>
     <form action="{%url 'Application:club_representative'%}" method="post">
@@ -19,14 +24,9 @@ representative{% endblock title %} {% block content %}
           placeholder="Example Human"
           name="representitave_name"
           required
-          {%
-          if
-          form.cleaned_data.representitave_name
-          %}
+          {%if form.cleaned_data.representitave_name%}
           value="{{form.cleaned_data.representitave_name}}"
-          {%
-          endif
-          %}
+          {%endif%}
         />
         <label for="repr_name">Your name.</label>
         {% if form.errors.representitave_name %}
@@ -41,14 +41,9 @@ representative{% endblock title %} {% block content %}
           placeholder="Awesome Club"
           name="club_name"
           required
-          {%
-          if
-          form.cleaned_data.club_name
-          %}
+          {%if form.cleaned_data.club_name%}
           value="{{form.cleaned_data.club_name}}"
-          {%
-          endif
-          %}
+          {%endif%}
         />
         <label for="club__name">Your club's name.</label>
         {% if form.errors.club_name %}
@@ -57,21 +52,10 @@ representative{% endblock title %} {% block content %}
       </div>
       <div class="form-floating mb-3">
         <textarea
-          type="text"
           class="form-control {% if form.errors.club_description %}is-invalid{% endif %}"
           id="club_descr"
           name="club_description"
-          required
-        >
-        {%
-        if
-        form.cleaned_data.club_description
-        %}
-        value="{{form.cleaned_data.club_description}}"
-        {%
-        endif
-        %}</textarea
-        >
+          required>{%if form.cleaned_data.club_description%}{{form.cleaned_data.club_description}}{%endif%}</textarea>
         <label for="club_descr">Brief description of the club.</label>
         {% if form.errors.club_description %}
         <div class="invalid-feedback">
@@ -81,21 +65,11 @@ representative{% endblock title %} {% block content %}
       </div>
       <div class="form-floating mb-3">
         <textarea
-          type="text"
           class="form-control {% if form.errors.representative_description %}is-invalid{% endif %}"
           id="repr_descr"
           name="representative_description"
           required
-        >
-        {%
-        if
-        form.cleaned_data.representative_description
-        %}
-        {{form.cleaned_data.representative_description}}
-        {%
-        endif
-        %}</textarea
-        >
+        >{%if form.cleaned_data.representative_description%}{{form.cleaned_data.representative_description}}{%endif%}</textarea>
         <label for="repr_descr"
           >Brief description of what you do for the club.</label
         >
@@ -110,14 +84,9 @@ representative{% endblock title %} {% block content %}
           value=""
           id="is_official"
           name="club_is_official"
-          {%
-          if
-          form.cleaned_data.club_is_official
-          %}
+          {%if form.cleaned_data.club_is_official%}
           checked
-          {%
-          endif
-          %}
+          {%endif%}
         />
         <label class="form-check-label" for="is_official">
           Club is officially endorsed by Dimond High School.
@@ -134,14 +103,9 @@ representative{% endblock title %} {% block content %}
           placeholder="exxample@raventechnology.dev"
           name="rep_email"
           required
-          {%
-          if
-          form.cleaned_data.rep_email
-          %}
+          {%if form.cleaned_data.rep_email%}
           value="{{form.cleaned_data.rep_email}}"
-          {%
-          endif
-          %}
+          {%endif%}
         />
         <label for="repr_email">Your email address.</label>
         {% if form.errors.rep_email %}
@@ -156,14 +120,9 @@ representative{% endblock title %} {% block content %}
           placeholder="(907)-600-9155"
           name="rep_phone"
           required
-          {%
-          if
-          form.cleaned_data.rep_phone
-          %}
+          {%if form.cleaned_data.rep_phone%}
           value="{{form.cleaned_data.rep_phone}}"
-          {%
-          endif
-          %}
+          {%endif%}
         />
         <label for="repr_phone">Phone number.</label>
         {% if form.errors.rep_email %}
@@ -177,19 +136,14 @@ representative{% endblock title %} {% block content %}
           type="checkbox"
           id="agree_to_terms"
           name="agree_to_data_policy"
-          {%
-          if
-          form.cleaned_data.agree_to_data_policy
-          %}
+          {%if form.cleaned_data.agree_to_data_policy%}
           checked
-          {%
-          endif
-          %}
+          {%endif%}
         />
         <label class="form-check-label" for="agree_to_terms">
-          You have read and agree to our <a href="#">Data Processing Policy</a>.
+          You have read and agree to our <a href="{% url "About:data_processing_policy" %}">Data Processing Policy</a>.
         </label>
-        {% if not_agree_to_data_policy %}
+        {% if form.errors.agree_to_data_policy %}
         <div class="invalid-feedback">
           Before we can process your application, you must read and agree to our
           Data Processing Policy.

@@ -7,3 +7,4 @@ pillow
 pip
 wheel
 setuptools
+psycopg2-binary

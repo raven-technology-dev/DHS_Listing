@@ -29,3 +29,10 @@ def club(_request, id: int):
         return render(_request, "listings/clubs/club.html", {"club_not_exist": True})
     # If it renders this, the club does exist.
     return render(_request, "listings/clubs/club.html", {"club": club})
+
+def events_listings(_request):
+    """
+    This is the view for event listings.
+    """
+    # NOTE: For now: this page displays that the events page is unavailable for now.
+    return render(_request, "listings/events/main.html", {})
