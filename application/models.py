@@ -42,7 +42,7 @@ class Club_Representative(models.Model):
     agree_to_data_policy = models.BooleanField(
         default=False,
         verbose_name="Agreement to Data Policy",
-        help_text="If the applicant agrees to RT's data processing policy. This agreement is REQUIRED for submitting an application.",
+        help_text="If the applicant agrees to RT's ToS and Privacy Policy. This agreement is REQUIRED for submitting an application.",
     )
     form_submitted_at = models.DateTimeField(auto_now_add=True)
 

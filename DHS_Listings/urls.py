@@ -19,6 +19,11 @@ from django.urls import path, include
 from django.conf.urls.static import static
 from django.conf import settings
 
+admin.site.name="Dimond HS Listings"
+admin.site.site_title="Dimond HS Listings"
+admin.site.index_title="Staff Panel"
+admin.site.site_header="Dimond HS Listings Staff"
+
 urlpatterns = [
     path("admin/doc/", include("django.contrib.admindocs.urls")),
     path("admin/", admin.site.urls),

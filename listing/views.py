@@ -24,6 +24,7 @@ def club(_request, id: int):
     """
     try:
         club = Club.objects.get(id=id)
+        print(club.test)
     except:
         # This is if a requested club ID does not exist.
         return render(_request, "listings/clubs/club.html", {"club_not_exist": True})

@@ -141,7 +141,7 @@ representative{% endblock title %} {% block content %}
           {%endif%}
         />
         <label class="form-check-label" for="agree_to_terms">
-          You have read and agree to our <a href="{% url "About:data_processing_policy" %}">Data Processing Policy</a>.
+          You have read and agree to our <a href="{%url 'About:terms_of_service'%}">Terms of Service</a>, and <a href="{%url 'About:privacy_policy'%}">Privacy Policy</a>, and that you are over the age of 13.
         </label>
         {% if form.errors.agree_to_data_policy %}
         <div class="invalid-feedback">
