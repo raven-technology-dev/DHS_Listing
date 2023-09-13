@@ -1,5 +1,39 @@
-{% extends "base.html" %}
-{% block title %}No results{% endblock title %}
-{% block content %}
-
+{% extends "base.html" %} {% block title %}No results{% endblock title %} 
+{%block content %}
+<div class="container content">
+  <div>
+    <h1>No Results</h1>
+    <p>
+      We're sorry, but your query did not return any results. We recommend that
+      you try the following:
+    </p>
+    <ul>
+      <li>Check your spelling.</li>
+      <li>Shorten your query.</li>
+      <li>
+        Search for one thing only (for example, search for a name only instead
+        of both a name and an email).
+      </li>
+    </ul>
+  </div>
+  <div>
+    <hr />
+    <form
+      class="d-flex m-0 mx-md-5"
+      role="search"
+      method="post"
+      action="{%url 'Search:search'%}"
+    >
+      {% csrf_token %}
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        name="phrases"
+      />
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+  </div>
+</div>
 {% endblock content %}

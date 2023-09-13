@@ -1,29 +1,41 @@
 {% extends "base.html" %} {% block title %}Search Results{% endblock title %}
 {%block content %}
 <div class="container content">
-  <h1>Search Results</h1>
-  <p>
-    Below are the search results for your previous search query. If you need to
-    complete another query, please fill it in in the form below.
-  </p>
+  <div>
+    <h1>Search Results</h1>
+    <p>
+      Below are the search results for your previous search query. If you need to
+      complete another query, please fill in in the form below.
+    </p>
+  </div>
   <div>
     <hr />
-    <form
-      class="d-flex m-0 mx-md-5"
-      role="search"
-      method="post"
-      action="{%url 'Search:search'%}"
-    >
+    <form class="d-flex m-0 mx-md-5" role="search" method="post" action="{%url 'Search:search'%}">
       {% csrf_token %}
-      <input
-        class="form-control me-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-        name="phrases"
-      />
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="phrases" />
       <button class="btn btn-primary" type="submit">Search</button>
     </form>
+  </div>
+  <div>
+    <hr>
+    {% for club in clubs %}
+    <a href="{%url 'Listing:clubs'%}{{club.id}}" class="text-decoration-none">
+      <div class="row border-top border-bottom p-3">
+        <h1>{{club.name}}</h1>
+        <small>Club (or other organization) at Dimond High School.</small>
+        <p class="pt-2">{{club.club_short_description}}</p>
+      </div>
+    </a>
+    {% endfor %}
+    {% for event in events %}
+    <a href="{%url 'Listing:events'%}{{event.id}}" class="text-decoration-none">
+      <div class="row border-top border-bottom p-3">
+        <h1>{{event.event_name}}</h1>
+        <small>Event at Dimond High School.</small>
+        <p class="pt-2">{{event.event_short_description}}</p>
+      </div>
+    </a>
+    {% endfor %}
   </div>
 </div>
 {% endblock content %}

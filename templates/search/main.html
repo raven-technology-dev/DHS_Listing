@@ -1,26 +1,21 @@
 {% extends "base.html" %}
 {% block title %}Search{% endblock title %} {% block content %}
 <div class="container content">
-  <h1>Search this platform</h1>
-  <p>
-    Enter your query into the field below, and then submit to search this
-    platform. This will search for names, people, emails, and more. Please check your spelling,
-    so we can provide accurate results. Also, please keep your search query short for more accurate results.
-  </p>
-  <form action="{%url 'Search:search'%}" method="post">
-    {% csrf_token %}
-    <div class="form-floating mb-3 row">
-      <input
-        type="text"
-        class="form-control"
-        id="s_phrases"
-        placeholder="Example Thing"
-        name="phrases"
-        required
-      />
-      <label for="s_phrases">Search Query</label>
-    </div>
-    <input type="submit" class="btn btn-primary" value="Search">
-  </form>
+  <div>
+    <h1>Search this platform</h1>
+    <p>
+      Enter your query into the field below, and then submit to search this
+      platform. This will search for names, people, emails, and more. Please check your spelling,
+      so we can provide accurate results. Also, please keep your search query short for more accurate results.
+    </p>
+  </div>
+  <div>
+    <hr />
+    <form class="d-flex m-0 mx-md-5" role="search" method="post" action="{%url 'Search:search'%}">
+      {% csrf_token %}
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="phrases" />
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+  </div>
 </div>
 {% endblock content %}

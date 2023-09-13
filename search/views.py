@@ -56,18 +56,17 @@ class search(View):
                 | Q(organizer_of_event__icontains=search_query)
                 | Q(organizer_email__icontains=search_query)
             )
+            print(clubs)
+            print(events)
         else:
             pass
             # TODO: Make a page that says there was an issue completing the search query, and to try again.
-        # This view will render the search results page, as that's the easiest way to do this.
-        print(clubs,events)
-        # TODO: Make a page for no results.
+        if clubs.exists() == False and events.exists() == False:
+            # This is a page for no results.
+            return render(_request, "search/no_results.html", {})
         return render(
-            _request, "search/results.html", {"clubs": clubs, "events": events}
+            # This view will render the search results page, as that's the easiest way to do this.
+            _request,
+            "search/results.html",
+            {"clubs": clubs, "events": events},
         )
-
-
-def search_results(_request, clubs: dict, events: dict):
-    """
-    This is the view that renders search query results.
-    """
