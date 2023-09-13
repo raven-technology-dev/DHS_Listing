@@ -1,0 +1,29 @@
+{% extends "base.html" %} {% block title %}Search Results{% endblock title %}
+{%block content %}
+<div class="container content">
+  <h1>Search Results</h1>
+  <p>
+    Below are the search results for your previous search query. If you need to
+    complete another query, please fill it in in the form below.
+  </p>
+  <div>
+    <hr />
+    <form
+      class="d-flex m-0 mx-md-5"
+      role="search"
+      method="post"
+      action="{%url 'Search:search'%}"
+    >
+      {% csrf_token %}
+      <input
+        class="form-control me-2"
+        type="search"
+        placeholder="Search"
+        aria-label="Search"
+        name="phrases"
+      />
+      <button class="btn btn-primary" type="submit">Search</button>
+    </form>
+  </div>
+</div>
+{% endblock content %}
