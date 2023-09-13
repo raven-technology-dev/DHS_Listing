@@ -1,21 +1,21 @@
 from django import forms
-from .models import Club_Representative
+from .models import Representative_Application
 
 
-class Club_Representative_Form(forms.ModelForm):
+class Representative_Form(forms.ModelForm):
     agree_to_data_policy = forms.BooleanField(
         required=True, widget=forms.CheckboxInput()
     )
     club_is_official = forms.BooleanField(required=False)
 
     class Meta:
-        model = Club_Representative
+        model = Representative_Application
         fields = (
             "representitave_name",
-            "club_name",
-            "club_description",
+            "thing_name",
+            "thing_description",
             "representative_description",
-            "club_is_official",
+            "thing_is_official",
             "rep_email",
             "rep_phone",
             "agree_to_data_policy",

@@ -1,12 +1,12 @@
-{% extends 'base.html' %} {% block title %}Apply to become a club
+{% extends 'base.html' %} {% block title %}Apply to become a
 representative{% endblock title %} {% block content %}
 <div class="content container">
-  <h1>Club Representative application</h1>
+  <h1>Representative application</h1>
   <p>
-    Below is the application to become a club representative on our platform. If
+    Below is the application to become a representative of a club or event on our platform. If
     your application gets approved, you will have permission to add or modify
-    your club on this platform. These applications are used in order to prevent
-    spam, so we can verify the identity and legitimacy of club representatives.
+    your club or event on this platform. These applications are used in order to prevent
+    spam, so we can verify the identity and legitimacy of representatives.
     <br>
     After your application has been submitted, we will call you in order to proceed
     with additional verification, and so we can set up your account. Please note
@@ -14,7 +14,7 @@ representative{% endblock title %} {% block content %}
     will call you, and not Dimond HS Listings.
   </p>
   <div>
-    <form action="{%url 'Application:club_representative'%}" method="post">
+    <form action="{%url 'Application:representative'%}" method="post">
       {% csrf_token %}
       <div class="form-floating mb-3">
         <input
@@ -36,30 +36,30 @@ representative{% endblock title %} {% block content %}
       <div class="form-floating mb-3">
         <input
           type="text"
-          class="form-control {% if form.errors.club_name %}is-invalid{% endif %}"
+          class="form-control {% if form.errors.thing_name %}is-invalid{% endif %}"
           id="club__name"
           placeholder="Awesome Club"
-          name="club_name"
+          name="thing_name"
           required
-          {%if form.cleaned_data.club_name%}
-          value="{{form.cleaned_data.club_name}}"
+          {%if form.cleaned_data.thing_name%}
+          value="{{form.cleaned_data.thing_name}}"
           {%endif%}
         />
-        <label for="club__name">Your club's name.</label>
-        {% if form.errors.club_name %}
-        <div class="invalid-feedback">Please enter your club's name.</div>
+        <label for="club__name">Your club or event's name.</label>
+        {% if form.errors.thing_name %}
+        <div class="invalid-feedback">Please enter your cause's name.</div>
         {% endif %}
       </div>
       <div class="form-floating mb-3">
         <textarea
-          class="form-control {% if form.errors.club_description %}is-invalid{% endif %}"
+          class="form-control {% if form.errors.thing_description %}is-invalid{% endif %}"
           id="club_descr"
-          name="club_description"
-          required>{%if form.cleaned_data.club_description%}{{form.cleaned_data.club_description}}{%endif%}</textarea>
-        <label for="club_descr">Brief description of the club.</label>
-        {% if form.errors.club_description %}
+          name="thing_description"
+          required>{%if form.cleaned_data.thing_description%}{{form.cleaned_data.thing_description}}{%endif%}</textarea>
+        <label for="club_descr">Brief description of the club or event.</label>
+        {% if form.errors.thing_description %}
         <div class="invalid-feedback">
-          Please enter a brief description of the club.
+          Please enter a brief description of your cause.
         </div>
         {% endif %}
       </div>
@@ -71,27 +71,27 @@ representative{% endblock title %} {% block content %}
           required
         >{%if form.cleaned_data.representative_description%}{{form.cleaned_data.representative_description}}{%endif%}</textarea>
         <label for="repr_descr"
-          >Brief description of what you do for the club.</label
+          >Brief description of what you do for your club or event.</label
         >
         {% if form.errors.representative_description %}
-        <div class="invalid-feedback">Please enter your name.</div>
+        <div class="invalid-feedback">Please enter what you do for your cause.</div>
         {% endif %}
       </div>
       <div class="form-check mb-3">
         <input
-          class="form-check-input {% if form.errors.club_is_official %}is-invalid{% endif %}"
+          class="form-check-input {% if form.errors.thing_is_official %}is-invalid{% endif %}"
           type="checkbox"
           value=""
           id="is_official"
-          name="club_is_official"
-          {%if form.cleaned_data.club_is_official%}
+          name="thing_is_official"
+          {%if form.cleaned_data.thing_is_official%}
           checked
           {%endif%}
         />
         <label class="form-check-label" for="is_official">
-          Club is officially endorsed by Dimond High School.
+          Club or Event is officially endorsed by Dimond High School.
         </label>
-        {% if form.errors.club_is_official %}
+        {% if form.errors.thing_is_official %}
         <div class="invalid-feedback">Please enter your name.</div>
         {% endif %}
       </div>

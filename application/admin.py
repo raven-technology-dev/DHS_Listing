@@ -1,14 +1,14 @@
 from django.contrib import admin
-from .models import Club_Representative
+from .models import Representative_Application
 
 
-class Club_Rep_Admin(admin.ModelAdmin):
+class Rep_Admin(admin.ModelAdmin):
     readonly_fields = (
         "representitave_name",
-        "club_name",
-        "club_description",
+        "thing_name",
+        "thing_description",
         "representative_description",
-        "club_is_official",
+        "thing_is_official",
         "rep_email",
         "rep_phone",
         "agree_to_data_policy",
@@ -16,4 +16,4 @@ class Club_Rep_Admin(admin.ModelAdmin):
     )
 
 
-admin.site.register(Club_Representative, Club_Rep_Admin)
+admin.site.register(Representative_Application, Rep_Admin)
