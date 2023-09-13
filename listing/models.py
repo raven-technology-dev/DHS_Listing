@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.postgres.fields import ArrayField
 
 
 class Club(models.Model):
@@ -12,12 +11,12 @@ class Club(models.Model):
         max_length=50,
         help_text="This field hold the name of your club.",
     )
-    # TODO: Optional thumbnail image as described in the concept document.
     thumbnail_image = models.ImageField(
         verbose_name="Club Thumbnail Image",
         help_text="This image is the image best used to represent this club.",
         null=True,
         blank=True,
+        upload_to="clubs/thumbnails/",
     )
     club_leader = models.CharField(
         verbose_name="Club Leader",
@@ -94,3 +93,62 @@ class Club(models.Model):
 
     def __str__(self) -> str:
         return f"{self.name}"
+
+
+class Event(models.Model):
+    """
+    This is the model for an Event listing on this platform.
+    """
+
+    # TODO: On events listing menu, have only upcoming events be shown.
+    # But, have a way that the user could see listings of past events.
+    event_name = models.CharField(max_length=255, verbose_name="Name of this event")
+    # TODO: thumbnail image.
+    thumbnail_image = models.ImageField(
+        verbose_name="Event Thumbnail Image",
+        help_text="This image is the image best used to represent this event.",
+        null=True,
+        blank=True,
+        upload_to="events/thumbnails/",
+    )
+    organizer_of_event = models.CharField(
+        max_length=255,
+        verbose_name="Event Organizer",
+        help_text="Person or Club holding the Event.",
+    )
+    date_time_of_event = models.DateTimeField(verbose_name="Date and Time of the event")
+    location_of_event = models.CharField(
+        max_length=255, verbose_name="Location of the Event"
+    )
+    event_short_description = models.TextField(
+        max_length=255,
+        verbose_name="Short Description of the Event",
+        help_text="This should be a short description of the event. This is needed so people can see what the event is, without having to read a lot.",
+    )
+    event_description = models.TextField(
+        verbose_name="Description of the Event",
+        help_text="This should be the long description of the event.",
+    )
+    organizer_email = models.EmailField(
+        verbose_name="Email Address",
+        help_text="Email of the event organizer, so people can contact organizer if needed.",
+    )
+    organizer_phone_number = models.CharField(
+        verbose_name="Phone Number",
+        null=True,
+        blank=True,
+        max_length=50,
+        help_text="This field is optional. A relevant phone number for the organizer, so they can make contact if needed.",
+    )
+    is_official = models.BooleanField(
+        default=False,
+        verbose_name="Is Official",
+        help_text="If this event is officially endorsed by Dimond High School.",
+    )
+
+    class Meta:
+        verbose_name = "Event Listing"
+        verbose_name_plural = "Events Listings"
+
+    def __str__(self) -> str:
+        return f"{self.event_name} by {self.organizer_of_event}"

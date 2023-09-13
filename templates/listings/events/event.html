@@ -1,0 +1,62 @@
+{% extends "base.html" %} {% block title %}{{event.event_name}}
+{% endblock title %} {% block content %}
+<div class="content container mb-5">
+  <div class="mb-3">
+    <a href="{%url 'Listing:clubs'%}"
+      ><p class="fs-5">&#8701; Click to go back to Events Listings.</p></a
+    >
+  </div>
+  <h1 class="display-3">{{event.event_name}}</h1>
+  <small>Event at Dimond High School.</small>
+  {% if already_happened %}
+  <hr />
+  <p class="fw-bold">This event has already happened.</p>
+  {% endif %} {%if event.thumbnail_image%}
+  <hr />
+  <img
+    class="card-img-top"
+    style="max-height: 25vh; width: auto; height: auto"
+    src="{{MEDIA_URL}}{{event.thumbnail_image|safe}}"
+    alt="The thumbnail image for this club"
+  />
+  {%endif%}
+  <hr />
+  <h2 class="mb-3">General Information</h2>
+  <div>
+    <table class="table table-hover">
+      <tbody>
+        <tr>
+          <th scope="row">Organizer of this event</th>
+          <td>{{event.organizer_of_event}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Time of this event</th>
+          <td>{{event.date_time_of_event}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Location of this event</th>
+          <td>{{event.location_of_event}}</td>
+        </tr>
+        <tr>
+          <th scope="row">Email of organizer</th>
+          <td>
+            <a href="mailto:{{event.organizer_email}}"
+              >{{event.organizer_email}}</a
+            >
+          </td>
+        </tr>
+        <!--If organizer phone number-->
+      </tbody>
+    </table>
+    <div>
+      {% if event.is_official %}
+      <small>This club is officially endorsed by Dimond High School.</small>
+      <br />
+      {%endif%}
+    </div>
+  </div>
+  <hr />
+  <h2>Description</h2>
+  <p>{{event.event_description|linebreaksbr}}</p>
+</div>
+{% endblock content %}

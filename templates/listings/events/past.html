@@ -1,13 +1,14 @@
-{% extends "base.html" %} {% block title %}Events{% endblock title %}
+{% extends "base.html" %}
+{% block title %}Past Events{% endblock title %}
 {% block content %}
 <div class="container content">
-  <h1>Upcoming Events at Dimond HS</h1>
+  <h1>Past Events at Dimond HS</h1>
   <p>
-    Below are the upcoming events for Dimond High School. If you would like to
+    Below are some of the past events for Dimond High School. If you would like to
     add your own listing, please
     <a href="#">apply to become a representative</a>.
     <br>
-    Don't see events that have already passed? Try <a href="{%url 'Listing:past_events'%}">viewing past events</a>,
+    Don't see events that are scheduled to happen? Try <a href="{%url 'Listing:events'%}">viewing upcoming events</a>,
     or completeing a <a href="#">search for the event</a>.
   </p>
   <hr />

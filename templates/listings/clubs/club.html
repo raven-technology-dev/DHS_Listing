@@ -17,26 +17,6 @@ EXIST! TODO: Makt this better! {%else%} {%block title%}{{club.name}}{%endblock t
   {%endif%}
   <hr />
   <h2 class="mb-3">General Information</h2>
-  {%comment%}
-  <div>
-    <p>The leader of this club is <b>{{club.club_leader}}</b>.</p>
-    {% if club.club_sponsor %}
-    <p>This club is sponsored by {{club.club_sponsor}}.</p>
-    {% endif %}
-    <p>
-      The email address for this club is
-      <b><a href="mailto:{{club.email_address}}">{{club.email_address}}</a></b>
-    </p>
-    {% if club.phone_number %}
-    <p>The phone number for this club is <b>{{club.phone_number}}</b></p>
-    {% endif %}
-    <p>This club's meeting time is <b>{{club.regular_meeting_time}}</b></p>
-    <p>This club meets at <b>{{club.regular_meeting_location}}</b></p>
-    {% if club.members %} This club has {{club.members}} member(s). {% endif %}
-    {% if club.is_accepting_new_members %} {% endif %} {% if club.is_active %}
-    {% endif %} {% if club.is_official %} {% endif %}
-  </div>
-  {%endcomment%}
   <div>
     <table class="table table-hover">
       <tbody>

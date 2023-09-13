@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Club
+from .models import Club, Event
 
 
 class ClubAdmin(admin.ModelAdmin):
@@ -21,3 +21,18 @@ admin.site.register(
     Club,
     ClubAdmin,
 )
+
+
+class EventAdmin(admin.ModelAdmin):
+    list_display = ["event_name", "organizer_of_event", "date_time_of_event"]
+    search_fields = [
+        "date_time_of_event",
+        "event_name",
+        "organizer_of_event",
+        "organizer_email",
+        "location_of_event",
+    ]
+    list_filter = ["is_official"]
+
+
+admin.site.register(Event, EventAdmin)
