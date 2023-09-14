@@ -56,8 +56,6 @@ class search(View):
                 | Q(organizer_of_event__icontains=search_query)
                 | Q(organizer_email__icontains=search_query)
             )
-            print(clubs)
-            print(events)
         else:
             pass
             # TODO: Make a page that says there was an issue completing the search query, and to try again.
