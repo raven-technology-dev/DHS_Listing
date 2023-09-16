@@ -132,6 +132,8 @@ class Event(models.Model):
     organizer_email = models.EmailField(
         verbose_name="Email Address",
         help_text="Email of the event organizer, so people can contact organizer if needed.",
+        null=True,
+        blank=True,
     )
     organizer_phone_number = models.CharField(
         verbose_name="Phone Number",
