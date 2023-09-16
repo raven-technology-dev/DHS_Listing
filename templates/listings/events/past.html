@@ -15,7 +15,7 @@
   <div class="row mt-3 mx-auto">
     {%for event in events%}
     <a
-      href="{{%url 'Listing:events'%}}{{event.id}}"
+      href="{%url 'Listing:events'%}{{event.id}}"
       class="text-decoration-none card col-md-3 m-2 p-0"
       style="width: 18rem"
     >
