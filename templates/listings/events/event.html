@@ -1,5 +1,5 @@
-{% extends "base.html" %} {% block title %}{{event.event_name}}
-{% endblock title %} {% block content %}
+{% extends "base.html" %} {% block title %}{{event.event_name}} {% endblock
+title %} {% block content %}
 <div class="content container mb-5">
   <div class="mb-3">
     <a href="{%url 'Listing:events'%}"
@@ -37,6 +37,7 @@
           <th scope="row">Location of this event</th>
           <td>{{event.location_of_event}}</td>
         </tr>
+        {% if event.organizer_email %}
         <tr>
           <th scope="row">Email of organizer</th>
           <td>
@@ -45,7 +46,7 @@
             >
           </td>
         </tr>
-        {#TODO: If organizer phone number#}
+        {% endif %} {#TODO: If organizer phone number#}
       </tbody>
     </table>
     <div>
