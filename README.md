@@ -26,7 +26,7 @@ Clone the repo by running
 
 `git clone https://github.com/raven-technology-dev/DHS_Listing.git`
 
-Change drectory into the file by running:
+Change drectory into the cloned repo by running:
 
 `cd DHS_Listing`
 
