@@ -22,12 +22,10 @@ class representative_application(View):
         if form.is_valid():
             form.save()
         else:
-            return render(
-                _request, "application/representative.html", {"form": form}
-            )
+            # NOTE: If user didn't agree to Data Processing Policy, this will return with that message.
+            return render(_request, "application/representative.html", {"form": form})
         return redirect(reverse("Application:representative_appl_subm"))
-        # TODO: If user didn't agree to Data Processing Policy, return with that message.
-        # TODO: If form is all good redirect to page that says that the form was submitted.
+        # NOTE: If form was all good, this will redirect to page that says that the form was submitted.
 
 
 def rep_appl_submitted(_request):

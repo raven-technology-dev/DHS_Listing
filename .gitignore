@@ -11,3 +11,5 @@ node_modules/**
 **/.hidden/**
 .venv
 media/**
+env
+# Gitignore'd env so any developers don't accidentally upload their own credentials.

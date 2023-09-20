@@ -129,7 +129,7 @@ representative{% endblock title %} {% block content %}
         <div class="invalid-feedback">Please enter your name.</div>
         {% endif %}
       </div>
-      {#TODO: Make sure that the user knows that we will call them.#}
+      {#NOTE: The user should know that we will call them.#}
       <div class="form-check mb-3">
         <input
           class="form-check-input {% if form.errors.agree_to_data_policy %}is-invalid{% endif %}"

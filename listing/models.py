@@ -100,10 +100,7 @@ class Event(models.Model):
     This is the model for an Event listing on this platform.
     """
 
-    # TODO: On events listing menu, have only upcoming events be shown.
-    # But, have a way that the user could see listings of past events.
     event_name = models.CharField(max_length=255, verbose_name="Name of this event")
-    # TODO: thumbnail image.
     thumbnail_image = models.ImageField(
         verbose_name="Event Thumbnail Image",
         help_text="This image is the image best used to represent this event.",

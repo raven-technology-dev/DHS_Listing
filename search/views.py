@@ -23,7 +23,8 @@ class search(View):
 
     Search queries should not be case sensitive.
 
-    TODO: Figure out how to order the results.
+    NOTE: The results are ordered by clubs first, and then events.
+    For each type, it will be in alphabetical order.
     """
 
     def get(self, _request):
@@ -38,7 +39,7 @@ class search(View):
         This is the view that processes search queries, and then redirects users to a "Search reseults" page,
         with the proper context.
         ____
-        TODO: Add form validation. For example, if someone sends a phrases query that's more than
+        TODO: Add better form validation. For example, if someone sends a phrases query that's more than
         255 char's long, redirect the user to the template for search get requests, but say that their
         search query was too long.
         """

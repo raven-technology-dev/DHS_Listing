@@ -27,7 +27,7 @@ def club(_request, id: int):
         club = Club.objects.get(id=id)
     except:
         # This is if a requested club ID does not exist.
-        # TODO: make a specialized page for club not exist.
+        # TODO: make an actual page for club not exist.
         return render(_request, "listings/clubs/club.html", {"club_not_exist": True})
     # If it renders this, the club does exist.
     return render(_request, "listings/clubs/club.html", {"club": club})
@@ -51,8 +51,8 @@ def event(_request, id: int):
     try:
         event = Event.objects.get(id=id)
     except:
-        # TODO: make a specialized page for event not exist.
-        return render(_request, "listings/events/event.html", {"club_not_exist": True})
+        # TODO: make an actual page for event not exist.
+        return render(_request, "listings/events/event.html", {"event_not_exist": True})
     if now() > event.date_time_of_event:
         already_happened = True
     else:
