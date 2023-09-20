@@ -1,6 +1,6 @@
 # Dimond HS Listings
 
-The source code for the backend of the website [`Dimond HS Listings`](https://raventechnology.dev).
+The source code for the backend of the website `Dimond HS Listings`.
 
 ## Purpose
 
