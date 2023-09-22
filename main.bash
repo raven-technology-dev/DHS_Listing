@@ -1,3 +1,4 @@
+python3 -m venv .venv
 source .venv/bin/activate;
 git pull git@github.com:raven-technology-dev/DHS_Listing.git;
 pip install --upgrade -r requirements.txt;
