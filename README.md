@@ -76,4 +76,4 @@ We open sourced this, so our work wouldn't go to waste, and so it could do some 
 
 - We were planning on adding tests, but since the platform got shut down, we have not added them yet.
 
-- As the code indicates, there are many things that we planned on doing to make the UI less buggy. Unfortuantely, since we have stopped working on this, we are not going to impliment those things right now.
+- As the code indicates, there are many things that we planned on doing to make the UI less buggy. Unfortunately, since we have stopped working on this, we are not going to impliment those things right now.
